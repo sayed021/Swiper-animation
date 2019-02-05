@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Swiper animation</title>
+	  <link rel="stylesheet" href="css/animate.min.css">
+	  <link rel="stylesheet" href="css/swiper.min.css">
+	<style>
+	 	.swiper-slide {
+	 		min-height: 100vh;
+	 		display: -webkit-flex;
+	 		display: -moz-flex;
+	 		display: -ms-flex;
+	 		display: -o-flex;
+	 		display: flex;
+	 		align-items: center;
+	 		justify-content: center;
+	 		background: #fff;
+	 	}
+	 	.swiper-pagination-bullet {
+	      width: 20px;
+	      height: 20px;
+	      text-align: center;
+	      line-height: 20px;
+	      font-size: 12px;
+	      color:#000;
+	      opacity: 1;
+	      background: rgba(0,0,0,0.2);
+    	}
+	    .swiper-pagination-bullet-active {
+	      color:#fff;
+	      background: #007aff;
+	    }
+	    h2 {
+	    	font-size: 80px;
+	    }
+
+	    @keyframes myAnim {
+	    	0%{
+				opacity:0;
+				background: transparent;
+				transform: scale(0);
+	    	}
+	    	100%{
+	    		opacity: 1;
+	    		background: red;
+				transform: scale(1);
+	    	}
+
+	    }
+	</style>
+
+</head>
+
+<body>
+	<div class="container-fluid p-0">
+		<div class="swiper-container">
+		  <div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div>
+						<h2 data-swiper-animation="fadeInDownBig" data-duration="1s" data-delay="0">Slide 1</h2>	
+						<h2 data-swiper-animation="fadeInUpBig" data-duration="1s" data-delay=".5s">Slide 1.1</h2>	
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<h2 data-swiper-animation="bounceIn" data-duration="3s" data-delay=".1s">Slide 2</h2>	
+				</div>
+				<div class="swiper-slide">
+					<h2 data-swiper-animation="jackInTheBox" data-duration="2s" data-delay=".2s">Slide 3</h2>	
+				</div>
+				<div class="swiper-slide" data-swiper-autoplay="5500">
+					<div>
+						<h2 class="myclass" data-swiper-animation="rotateIn" data-duration="5s" data-delay=".1s">Slide 4</h2>	
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<h2 data-swiper-animation="fadeInRight" data-duration="2s" data-delay=".1s">Slide 5</h2>	
+				</div>
+				<div class="swiper-slide">
+					<div>
+						<h2 data-swiper-animation="zoomIn" data-duration="1.5s" data-delay=".1s">Slide 6</h2>		
+					</div>
+					<div class="position-absulute">
+						<h2 data-swiper-animation="fadeInRight" data-duration="2s" data-delay="1s">My Items</h2>		
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<ul class="list-unstyled">
+						<li style="font-size: 40px" data-swiper-animation="zoomIn" data-duration="2s" data-dealy="0">item 1</li>
+						<li style="font-size: 40px" data-swiper-animation="zoomIn" data-duration="2s" data-dealy="1">item 2</li>
+						<li style="font-size: 40px" data-swiper-animation="zoomIn" data-duration="3s" data-dealy="1.5s">item 3</li>
+						<li style="font-size: 40px" data-swiper-animation="zoomIn" data-duration="2s" data-dealy="2s">item 4</li>
+						<li style="font-size: 40px" data-swiper-animation="zoomIn" data-duration="2s" data-dealy="2.5s">item 5</li>
+					</ul>
+				</div>
+		  </div>
+
+		  <div class="swiper-pagination"></div>
+	  </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.js"integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="crossorigin="anonymous"></script>
+
+	<script src="js/SwiperAnimation.min.js"></script>
+	<script src="js/swiper.min.js"></script>
+
+	<script>
+	  var swiperAnimation = new SwiperAnimation();
+	  var mySwiper4 = new Swiper('.swiper-container', {
+	  	effect:'fade',
+	  	autoplay: {
+	  		waitForTransition: true
+	  	},
+	  	pagination: {
+		    el: '.swiper-pagination',
+		    type: 'bullets',
+		     clickable: true,
+		  },
+	    on: {
+	      init: function () {
+	        swiperAnimation.init(this).animate();
+	      },
+	      slideChange: function () {
+	        swiperAnimation.init(this).animate();
+	      },
+	      paginationRender: function(i){
+	      	return '<span>'+i+'</span>'
+	      }
+	    }
+	  });
+	</script>
+
+</body>
+
+</html>
